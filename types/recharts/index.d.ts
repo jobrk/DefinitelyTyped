@@ -758,6 +758,70 @@ export interface ResponsiveContainerProps {
 
 export class ResponsiveContainer extends React.Component<ResponsiveContainerProps, ContainerSize> { }
 
+export interface SankeyLink {
+    target: number;
+    source: number;
+    value: number;
+    sy: number;
+    dy: number;
+    ty: number;
+}
+
+export interface SankeyNode {
+    x: number;
+    y: number;
+    dx: number;
+    dy: number;
+    depth: number;
+    value: number;
+}
+
+export class SankeyProps implements Partial<PresentationAttributes> {
+    nameKey: DataKey;
+    dataKey: DataKey;
+    width: number;
+    height: number;
+    data: {
+      node: SankeyNode[];
+      links: SankeyLink[];
+    };
+    nodePadding: number;
+    nodeWidth: number;
+    linkCurvature: number;
+    iterations: number;
+    node: React.ReactElement;
+    link: React.ReactElement;
+  
+    style: any;
+  
+    className: string;
+    children: any;
+    margin: Margin;
+  
+    onClick: any;
+  
+    onMouseEnter: any;
+    onMouseLeave: any;
+  
+    sourceX: any;
+    sourceY: any;
+    sourceControlX: any;
+    targetX: any;
+    targetY: any;
+    targetControlX: any;
+    linkWidth: any;
+}
+
+export class SankeyState {
+    activeElement: any;
+    activeElementType: any;
+    isTooltipActive: boolean;
+    nodes: SankeyNode[];
+    links: SankeyLink[];
+}
+
+export class Sankey extends React.PureComponent<SankeyProps, SankeyState> { }
+
 export interface ScatterPoint {
     cx?: number;
     cy?: number;
